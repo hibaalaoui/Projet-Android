@@ -7,59 +7,84 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:background="#F5F5F5"
     tools:context=".MainActivity">
-    
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        
+
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_height="wrap_content">
+            android:padding="20dp">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Log In"
-                android:textAppearance="?textAppearanceBodyLarge"
+                android:textColor="#2E7D32"
+                android:textSize="24sp"
+                android:textStyle="bold"
                 android:gravity="center"/>
+
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:hint="Email"
-                android:id="@+id/email_login" />
+                android:padding="15dp"
+                android:background="@drawable/rounded_edittext"
+                android:id="@+id/email_login"
+                android:textColor="#000000"
+                android:textColorHint="#999999" />
+
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:hint="Password"
-                android:id="@+id/password_login" />
+                android:padding="15dp"
+                android:background="@drawable/rounded_edittext"
+                android:id="@+id/password_login"
+                android:textColor="#000000"
+                android:textColorHint="#999999" />
+
             <Button
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="Log In"
+                android:padding="15dp"
+                android:backgroundTint="#2E7D32"
+                android:textColor="#FFFFFF"
                 android:id="@+id/btn_login"
-                android:textAppearance="?android:textAppearanceMedium"/>
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:id="@+id/forget_password"
                 android:text="Forgot your password ?"
-                android:padding="5dp"/>
+                android:padding="5dp"
+                android:textColor="#666666"
+                android:textSize="14sp"/>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:id="@+id/signup_reg"
                 android:text="Don't have an account ? Click here to sign up"
-                android:padding="5dp"/>
+                android:padding="5dp"
+                android:textColor="#000000"
+                android:textSize="14sp"/>
 
         </LinearLayout>
     </ScrollView>
-
 
 </LinearLayout>
