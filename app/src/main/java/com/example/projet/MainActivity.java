@@ -45,6 +45,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         mAuth=FirebaseAuth.getInstance();
+        /* if (mAuth.getCurrentUser()!=null) {
+            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+        } */
         mDialog=new ProgressDialog(this);
         loginDetails();
     }
