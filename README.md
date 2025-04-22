@@ -9,3 +9,4 @@ To get SHA-1 and SHA-256 fingerprints, execute on terminal ./gradlew signingRepo
 4- Registration is connected with google firebase (tested, it works)
 5- LogIn page is linked with Home page (après logging successfully)
 6- Design initial dyal Home page with navbar and navmenu (we can modify it later)
+7- Separet 3 fragments java (dashboard, income, expense), drtlhom acces depuis home page avec 2 methodes : mn navbar & mn navmenu 
