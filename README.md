@@ -12,7 +12,8 @@ For now, only activated authentification with email and password (might add soci
 5- LogIn page is linked with Home page (après logging successfully)
 6- Design initial dyal Home page with navbar and navmenu (we can modify it later)
 7- Separated 3 fragments java (dashboard, income, expense), drtlhom acces depuis home page avec 2 methodes : mn navbar & mn navmenu 
-8- Added interactive pop ups for income & expense (needs fixing !!!)
+8- Added interactive pop ups for income & expense (design needs fixing !!!)
+9- Incomes are successfully connected to realtime database (kaytl3o sous forme json !) --> hadi kant f commit 13 "Insert incomes into Realtime Database as JSON (firebase console)"
 **Interfaces li kaynin**
 -Log In
 -Registration
