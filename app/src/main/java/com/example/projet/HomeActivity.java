@@ -26,9 +26,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private BottomNavigationView bottomNavigationView;
     private FrameLayout frameLayout;
     //Fragment
-    private DashBoardFragment dashBoardFragment;
+
     private IncomeFragment incomeFragment;
-    private ExpenseFragment expenseFragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,25 +56,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView=findViewById(R.id.naView);
         navigationView.setNavigationItemSelectedListener(this);
 
-        dashBoardFragment= new DashBoardFragment();
-        incomeFragment=new IncomeFragment();
-        expenseFragment=new ExpenseFragment();
-        setFragment(dashBoardFragment);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if (item.getItemId() == R.id.dashboard) {
-                    setFragment(dashBoardFragment);
-                    bottomNavigationView.setItemBackgroundResource(R.color.dashboard_color);
-                    return true;
-                } else if (item.getItemId() == R.id.income) {
+                if (item.getItemId() == R.id.income) {
                     setFragment(incomeFragment);
                     bottomNavigationView.setItemBackgroundResource(R.color.income_color);
-                    return true;
-                } else if (item.getItemId() == R.id.expense) {
-                    setFragment(expenseFragment);
-                    bottomNavigationView.setItemBackgroundResource(R.color.expense_color);
                     return true;
                 } else {
                     return false;
@@ -103,15 +91,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     public void displaySelectedListener(int itemId){
         Fragment fragment=null;
-        if (itemId == R.id.dashboard) {
-            fragment=new DashBoardFragment();
-            // Handle dashboard click
-        } else if (itemId == R.id.income) {
+        if (itemId == R.id.income) {
             fragment=new IncomeFragment();
             // Handle income click
-        } else if (itemId == R.id.expense) {
-            fragment=new ExpenseFragment();
-            // Handle expenses click
         }
 
 
