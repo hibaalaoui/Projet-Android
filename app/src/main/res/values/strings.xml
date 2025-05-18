@@ -5,4 +5,17 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="app_name0">FinanceApp</string>
+
+    <string-array name="expense_categories">
+        <item>Alimentation</item>
+        <item>Transport</item>
+        <item>Logement</item>
+        <item>Santé</item>
+        <item>Loisirs</item>
+        <item>Éducation</item>
+        <item>Factures</item>
+        <item>Autre</item>
+    </string-array>
 </resources>

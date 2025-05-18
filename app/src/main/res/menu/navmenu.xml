@@ -3,4 +3,8 @@
     <item android:id="@+id/income"
         android:title="Income"
         android:icon="@drawable/income" />
+    <item
+        android:id="@+id/expenses"
+        android:title="Dépenses" />
+
 </menu>
