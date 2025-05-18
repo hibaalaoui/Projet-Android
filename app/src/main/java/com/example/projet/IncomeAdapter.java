@@ -10,49 +10,48 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.projet.Model.Income;
 
 import java.util.List;
+import java.util.Locale;
 
 public class IncomeAdapter extends RecyclerView.Adapter<IncomeAdapter.IncomeViewHolder> {
 
     private List<Income> incomeList;
 
-    // ✅ Constructeur avec une liste d'incomes
     public IncomeAdapter(List<Income> incomeList) {
         this.incomeList = incomeList;
-    }
-
-    // ✅ Méthode pour mettre à jour la liste
-    public void setIncomeList(List<Income> newList) {
-        this.incomeList = newList;
-        notifyDataSetChanged();
     }
 
     @NonNull
     @Override
     public IncomeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_income, parent, false);
-        return new IncomeViewHolder(view);
+        View itemView = LayoutInflater.from(parent.getContext())
+                .inflate(android.R.layout.simple_list_item_2, parent, false);
+        return new IncomeViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull IncomeViewHolder holder, int position) {
         Income income = incomeList.get(position);
-        holder.textSource.setText(income.getSource());
-        holder.textAmount.setText(String.valueOf(income.getAmount()));
+        holder.text1.setText(income.getSource());
+        holder.text2.setText(String.format(Locale.getDefault(), "%.2f Dhs", income.getAmount()));
     }
 
     @Override
     public int getItemCount() {
-        return incomeList != null ? incomeList.size() : 0;
+        return incomeList.size();
     }
 
-    public static class IncomeViewHolder extends RecyclerView.ViewHolder {
-        TextView textSource, textAmount;
+    public void setIncomeList(List<Income> incomes) {
+        this.incomeList = incomes;
+        notifyDataSetChanged();
+    }
 
-        public IncomeViewHolder(@NonNull View itemView) {
+    static class IncomeViewHolder extends RecyclerView.ViewHolder {
+        TextView text1, text2;
+
+        IncomeViewHolder(View itemView) {
             super(itemView);
-            textSource = itemView.findViewById(R.id.textSource);
-            textAmount = itemView.findViewById(R.id.textAmount);
+            text1 = itemView.findViewById(android.R.id.text1);
+            text2 = itemView.findViewById(android.R.id.text2);
         }
     }
 }

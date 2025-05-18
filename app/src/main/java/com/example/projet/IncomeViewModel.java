@@ -1,5 +1,6 @@
 package com.example.projet;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -24,48 +25,41 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-
 public class IncomeViewModel extends ViewModel {
 
-    private MutableLiveData<String> successMessage = new MutableLiveData<>();
-    private MutableLiveData<String> errorMessage = new MutableLiveData<>();
-    private MutableLiveData<List<Income>> incomeListLiveData = new MutableLiveData<>();
-    private DatabaseReference incomeRef;
+    private final MutableLiveData<List<Income>> incomeList = new MutableLiveData<>(new ArrayList<>());
+    private final MutableLiveData<String> successMessage = new MutableLiveData<>();
+    private final MutableLiveData<String> errorMessage = new MutableLiveData<>();
 
-    private ValueEventListener incomeListener;
+    private final DatabaseReference databaseRef;
 
     public IncomeViewModel() {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            incomeRef = FirebaseDatabase.getInstance().getReference("incomes").child(user.getUid());
-            listenToIncomeChanges();
-        }
-    }
+        // Référence vers le noeud "incomes" dans Firebase
+        databaseRef = FirebaseDatabase.getInstance().getReference("incomes");
 
-    private void listenToIncomeChanges() {
-        incomeListener = new ValueEventListener() {
+        // Écoute les changements dans Firebase pour récupérer toute la liste à jour
+        databaseRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot snapshot) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
                 List<Income> incomes = new ArrayList<>();
-                for (DataSnapshot childSnapshot : snapshot.getChildren()) {
-                    Income income = childSnapshot.getValue(Income.class);
+                for (DataSnapshot incomeSnapshot : snapshot.getChildren()) {
+                    Income income = incomeSnapshot.getValue(Income.class);
                     if (income != null) {
                         incomes.add(income);
                     }
                 }
-                incomeListLiveData.setValue(incomes);
+                incomeList.setValue(incomes);
             }
 
             @Override
-            public void onCancelled(DatabaseError error) {
-                errorMessage.setValue("Erreur lors de la lecture des données : " + error.getMessage());
+            public void onCancelled(@NonNull DatabaseError error) {
+                errorMessage.setValue("Erreur lors de la lecture des revenus : " + error.getMessage());
             }
-        };
-        incomeRef.addValueEventListener(incomeListener);
+        });
     }
 
     public LiveData<List<Income>> getIncomeList() {
-        return incomeListLiveData;
+        return incomeList;
     }
 
     public LiveData<String> getSuccessMessage() {
@@ -77,25 +71,24 @@ public class IncomeViewModel extends ViewModel {
     }
 
     public void addIncome(String source, double amount) {
-        if (incomeRef == null) {
-            errorMessage.setValue("Utilisateur non authentifié");
+        if (amount <= 0) {
+            errorMessage.setValue("Le montant doit être supérieur à zéro");
             return;
         }
 
-        String id = incomeRef.push().getKey();
-        Income income = new Income(id, source, amount);
+        // Création d'un nouvel objet Income
+        Income newIncome = new Income(source, amount);
 
-        incomeRef.child(id).setValue(income)
-                .addOnSuccessListener(unused -> successMessage.setValue("Revenu ajouté"))
-                .addOnFailureListener(e -> errorMessage.setValue("Erreur : " + e.getMessage()));
-    }
+        // Générer une clé unique dans Firebase pour cet income
+        String key = databaseRef.push().getKey();
 
-    @Override
-    protected void onCleared() {
-        super.onCleared();
-        if (incomeRef != null && incomeListener != null) {
-            incomeRef.removeEventListener(incomeListener);
+        if (key != null) {
+            // Ajout dans Firebase Database
+            databaseRef.child(key).setValue(newIncome)
+                    .addOnSuccessListener(aVoid -> successMessage.setValue("Revenu ajouté avec succès"))
+                    .addOnFailureListener(e -> errorMessage.setValue("Erreur ajout revenu : " + e.getMessage()));
+        } else {
+            errorMessage.setValue("Erreur interne lors de la création de la clé");
         }
     }
 }
-

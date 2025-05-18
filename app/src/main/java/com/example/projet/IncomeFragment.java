@@ -83,16 +83,9 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
-
 public class IncomeFragment extends Fragment {
 
-    private EditText editTextAmount, editTextSource;
-    private Button buttonAddIncome;
-    private IncomeViewModel incomeViewModel;
-    private RecyclerView recyclerViewIncomes;
-    private IncomeAdapter incomeAdapter;
-    private BarChart barChart;
-    private PieChart pieChart;
+    private Button buttonInsert, buttonList, buttonCharts;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -100,109 +93,23 @@ public class IncomeFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_income, container, false);
 
-        editTextAmount = view.findViewById(R.id.editTextAmount);
-        editTextSource = view.findViewById(R.id.editTextSource);
-        buttonAddIncome = view.findViewById(R.id.buttonAddIncome);
-        recyclerViewIncomes = view.findViewById(R.id.recyclerViewIncomes);
-        barChart = view.findViewById(R.id.barChart);
-        pieChart = view.findViewById(R.id.pieChart);
+        buttonInsert = view.findViewById(R.id.buttonInsert);
+        buttonList = view.findViewById(R.id.buttonList);
+        buttonCharts = view.findViewById(R.id.buttonCharts);
 
-        recyclerViewIncomes.setLayoutManager(new LinearLayoutManager(getContext()));
-        incomeAdapter = new IncomeAdapter(new ArrayList<>());
-        recyclerViewIncomes.setAdapter(incomeAdapter);
+        // Au départ, on affiche le fragment insertion
+        loadFragment(new IncomeInsertFragment());
 
-        incomeViewModel = new ViewModelProvider(this).get(IncomeViewModel.class);
-
-        incomeViewModel.getSuccessMessage().observe(getViewLifecycleOwner(), message -> {
-            Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
-            editTextAmount.setText("");
-            editTextSource.setText("");
-        });
-
-        incomeViewModel.getErrorMessage().observe(getViewLifecycleOwner(), message -> {
-            Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
-        });
-
-        incomeViewModel.getIncomeList().observe(getViewLifecycleOwner(), incomes -> {
-            incomeAdapter.setIncomeList(incomes);
-            incomeAdapter.notifyDataSetChanged();
-            updateBarChart(incomes);
-            updatePieChart(incomes);  // <-- Ajout ici pour le PieChart
-        });
-
-        buttonAddIncome.setOnClickListener(v -> {
-            String source = editTextSource.getText().toString().trim();
-            String amountStr = editTextAmount.getText().toString().trim();
-
-            if (source.isEmpty() || amountStr.isEmpty()) {
-                Toast.makeText(getActivity(), "Champs vides", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            double amount;
-            try {
-                amount = Double.parseDouble(amountStr);
-            } catch (NumberFormatException e) {
-                Toast.makeText(getActivity(), "Montant invalide", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            incomeViewModel.addIncome(source, amount);
-        });
+        buttonInsert.setOnClickListener(v -> loadFragment(new IncomeInsertFragment()));
+        buttonList.setOnClickListener(v -> loadFragment(new IncomeListFragment()));
+        buttonCharts.setOnClickListener(v -> loadFragment(new IncomeChartFragment()));
 
         return view;
     }
 
-    private void updateBarChart(List<Income> incomes) {
-        List<BarEntry> entries = new ArrayList<>();
-        List<String> labels = new ArrayList<>();
-
-        for (int i = 0; i < incomes.size(); i++) {
-            Income income = incomes.get(i);
-            entries.add(new BarEntry(i, (float) income.getAmount()));
-            labels.add(income.getSource());
-        }
-
-        BarDataSet dataSet = new BarDataSet(entries, "Revenus");
-        dataSet.setColor(Color.BLUE);
-        dataSet.setValueTextColor(Color.BLACK);
-        dataSet.setValueTextSize(14f);
-
-        BarData barData = new BarData(dataSet);
-        barChart.setData(barData);
-
-        XAxis xAxis = barChart.getXAxis();
-        xAxis.setValueFormatter(new IndexAxisValueFormatter(labels));
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setGranularity(1f);
-        xAxis.setGranularityEnabled(true);
-
-        barChart.getDescription().setEnabled(false);
-        barChart.getAxisRight().setEnabled(false);
-        barChart.animateY(1000);
-        barChart.invalidate();
-    }
-
-    private void updatePieChart(List<Income> incomes) {
-        List<PieEntry> entries = new ArrayList<>();
-
-        for (Income income : incomes) {
-            entries.add(new PieEntry((float) income.getAmount(), income.getSource()));
-        }
-
-        PieDataSet dataSet = new PieDataSet(entries, "Répartition des revenus");
-        dataSet.setColors(ColorTemplate.MATERIAL_COLORS);
-        dataSet.setValueTextColor(Color.WHITE);
-        dataSet.setValueTextSize(14f);
-
-        PieData pieData = new PieData(dataSet);
-        pieChart.setData(pieData);
-        pieChart.getDescription().setEnabled(false);
-        pieChart.setUsePercentValues(true);
-        pieChart.setDrawHoleEnabled(true);
-        pieChart.setHoleRadius(30f);
-        pieChart.setTransparentCircleRadius(35f);
-        pieChart.animateY(1000);
-        pieChart.invalidate();
+    private void loadFragment(Fragment fragment) {
+        getChildFragmentManager().beginTransaction()
+                .replace(R.id.fragmentContainer, fragment)
+                .commit();
     }
 }
