@@ -37,6 +37,7 @@ dependencies {
     implementation("com.google.firebase:firebase-auth:22.3.0")
     implementation ("com.google.firebase:firebase-database:20.3.0")
     implementation ("androidx.recyclerview:recyclerview:1.3.1")
+    implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
 
 
     implementation("androidx.core:core-ktx:1.12.0")
