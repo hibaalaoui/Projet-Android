@@ -75,9 +75,10 @@ public class IncomeViewModel extends ViewModel {
             errorMessage.setValue("Le montant doit être supérieur à zéro");
             return;
         }
+        long now = System.currentTimeMillis();
 
         // Création d'un nouvel objet Income
-        Income newIncome = new Income(source, amount);
+        Income newIncome = new Income(source, amount, now);
 
         // Générer une clé unique dans Firebase pour cet income
         String key = databaseRef.push().getKey();

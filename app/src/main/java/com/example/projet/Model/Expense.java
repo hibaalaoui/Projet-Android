@@ -24,4 +24,10 @@ public class Expense {
     }
 
     // Tu peux ajouter getters/setters si tu utilises Room
+    public double getAmount() {
+        return amount;
+    }
+    public long getTimestamp() {
+        return timestamp;
+    }
 }

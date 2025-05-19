@@ -17,6 +17,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import com.example.projet.ExpenseListFragment;
+import com.example.projet.SavingsFragment;
+
 
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -102,6 +104,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             fragment = new IncomeFragment();
         } else if (itemId == R.id.expenses) {
             fragment = new ExpenseListFragment();
+        } else if (itemId == R.id.nav_savings) {
+            fragment = new SavingsFragment();
         }
 
         if (fragment != null) {
