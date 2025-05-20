@@ -34,7 +34,7 @@ public class SavingsFragment extends Fragment {
 
         viewModel = new ViewModelProvider(this).get(SavingsViewModel.class);
         viewModel.getSavings().observe(getViewLifecycleOwner(), amount -> {
-            tvSavings.setText(String.format(Locale.getDefault(), "Épargne : %.2f", amount));
+            tvSavings.setText(String.format(Locale.getDefault(), "Épargne : %.2f MAD", amount));
         });
         viewModel.getChartEntries().observe(getViewLifecycleOwner(), entries -> {
             LineDataSet set = new LineDataSet(entries, "Épargne cumulée");

@@ -1,21 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="16dp"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/tv_savings_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Épargne : 0.00"
-        android:textSize="24sp"/>
+        android:text="Épargne : 0.00 MAD"
+        android:textSize="30sp"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/chart_savings"
+        android:layout_marginBottom="16dp"/>
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/chart_savings"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
-</LinearLayout>
+        android:layout_width="402dp"
+        android:layout_height="501dp"
+        android:layout_centerInParent="true" />
+</RelativeLayout>
