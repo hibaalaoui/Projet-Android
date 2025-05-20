@@ -24,7 +24,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Registration"
+                android:text="Nouveau compte"
                 android:textColor="#2E7D32"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -45,18 +45,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:hint="Password"
+                android:hint="Mot de passe"
                 android:padding="15dp"
                 android:background="@drawable/rounded_edittext"
                 android:id="@+id/password_reg"
                 android:textColor="#000000"
-                android:textColorHint="#999999" />
+                android:textColorHint="#999999"
+                android:inputType="textPassword" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:text="Register"
+                android:text="Créer"
                 android:padding="15dp"
                 android:backgroundTint="#2E7D32"
                 android:textColor="#FFFFFF"
@@ -70,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:id="@+id/signin_here"
-                android:text="Already have an account ? Click here to log in"
+                android:text="Vous avez déjà un compte? Se connecter"
                 android:padding="5dp"
                 android:textColor="#000000"
                 android:textSize="14sp"/>

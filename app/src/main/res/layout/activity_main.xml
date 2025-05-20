@@ -22,7 +22,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Log In"
+                android:text="Connexion"
                 android:textColor="#2E7D32"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -43,18 +43,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:hint="Password"
+                android:hint="Mot de passe"
                 android:padding="15dp"
                 android:background="@drawable/rounded_edittext"
                 android:id="@+id/password_login"
                 android:textColor="#000000"
-                android:textColorHint="#999999" />
+                android:textColorHint="#999999"
+                android:inputType="textPassword"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:text="Log In"
+                android:text="Se connecter"
                 android:padding="15dp"
                 android:backgroundTint="#2E7D32"
                 android:textColor="#FFFFFF"
@@ -67,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:id="@+id/forget_password"
-                android:text="Forgot your password ?"
+                android:text="Mot de passe oublié ?"
                 android:padding="5dp"
                 android:textColor="#666666"
                 android:textSize="14sp"/>
@@ -77,7 +78,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:id="@+id/signup_reg"
-                android:text="Don't have an account ? Click here to sign up"
+                android:text="Créer un nouveau compte"
                 android:padding="5dp"
                 android:textColor="#000000"
                 android:textSize="14sp"/>

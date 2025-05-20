@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="16dp">
 
     <LinearLayout
@@ -30,11 +31,15 @@
             android:hint="Note (facultative)"
             android:inputType="text"
             android:layout_marginBottom="16dp" />
-
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnAddExpense"
+            android:text="Ajouter Dépense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ajouter la dépense" />
+            android:layout_marginBottom="16dp"
+            android:textColor="#FFFFFF"
+            app:cornerRadius="12dp"
+            app:backgroundTint="#154928" />
+
     </LinearLayout>
 </ScrollView>

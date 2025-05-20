@@ -1,37 +1,54 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- fragment_income.xml -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="16dp"
     android:gravity="center"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
+    <TextView
+        android:text="Bienvenue à l'espace de gestion de vos revenus"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#165B2C"
+        android:layout_marginBottom="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonInsert"
         android:text="Ajouter Revenu"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp"
+        android:textColor="#FFFFFF"
+        app:cornerRadius="12dp"
+        app:backgroundTint="#154928" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonList"
-        android:text="Voir la liste des revenus"
-        android:layout_width="wrap_content"
+        android:text="Consulter vos revenus"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp"
+        android:textColor="#FFFFFF"
+        app:cornerRadius="12dp"
+        app:backgroundTint="#154928" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonCharts"
         android:text="Afficher les graphiques"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        app:cornerRadius="12dp"
+        app:backgroundTint="#154928" />
 
     <FrameLayout
         android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp" />
 
 </LinearLayout>
