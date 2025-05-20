@@ -1,0 +1,3 @@
+Ce modèle léger de classification avec TFLite a pour but d'analyser l'historique des dépenses
+par catégorie (selon liste déjà implémentée dans le projet Android), et suggérer des catégories
+sur lesquelles l'utilisateur peut réduire ses dépenses pour mieux économiser 
