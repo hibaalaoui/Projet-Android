@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -40,6 +41,12 @@ public class SavingsFragment extends Fragment {
             LineDataSet set = new LineDataSet(entries, "Épargne cumulée");
             chartSavings.setData(new LineData(set));
             chartSavings.invalidate();
+            chartSavings.getDescription().setEnabled(false);
+            XAxis xAxis = chartSavings.getXAxis();
+            ((com.github.mikephil.charting.components.XAxis) xAxis).setPosition(XAxis.XAxisPosition.BOTTOM);
+            xAxis.setGranularity(1f);
+            chartSavings.getAxisRight().setEnabled(false);
+
         });
         return view;
     }
