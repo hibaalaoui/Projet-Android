@@ -16,6 +16,8 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import com.example.projet.BudgetLimitFragment;
+
 import com.example.projet.ExpenseListFragment;
 import com.example.projet.SavingsFragment;
 import com.example.projet.ReportFragment;
@@ -108,8 +110,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             ft.commit();
         }
 
+
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         drawerLayout.closeDrawer(GravityCompat.START);
+
+
+
     }
 
     @Override

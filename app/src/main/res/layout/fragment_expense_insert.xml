@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/expense_background"
     android:padding="16dp">
 
     <LinearLayout
@@ -16,13 +16,19 @@
             android:layout_height="wrap_content"
             android:hint="Montant (DH)"
             android:inputType="numberDecimal"
+            android:background="@drawable/edittext_background"
+            android:padding="12dp"
+            android:textColor="@color/expense_text_primary"
+            android:textSize="16sp"
             android:layout_marginBottom="16dp" />
 
         <Spinner
             android:id="@+id/spinnerExpenseCategory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp" />
+            android:background="@drawable/spinner_background"
+            android:layout_marginBottom="16dp"
+            android:padding="12dp" />
 
         <EditText
             android:id="@+id/editExpenseNote"
@@ -30,16 +36,21 @@
             android:layout_height="wrap_content"
             android:hint="Note (facultative)"
             android:inputType="text"
-            android:layout_marginBottom="16dp" />
-        <com.google.android.material.button.MaterialButton
+            android:background="@drawable/edittext_background"
+            android:padding="12dp"
+            android:textColor="@color/expense_text_primary"
+            android:textSize="16sp"
+            android:layout_marginBottom="24dp" />
+
+        <!-- ➕ Bouton Ajouter -->
+        <Button
             android:id="@+id/btnAddExpense"
-            android:text="Ajouter Dépense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:textColor="#FFFFFF"
-            app:cornerRadius="12dp"
-            app:backgroundTint="#154928" />
-
+            android:text="Ajouter la dépense"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:backgroundTint="@color/darkgreen"
+            android:elevation="4dp" />
     </LinearLayout>
 </ScrollView>

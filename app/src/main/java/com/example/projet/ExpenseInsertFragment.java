@@ -17,7 +17,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.projet.Model.Expense;
+import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Locale;
 import java.util.UUID;
 
 public class ExpenseInsertFragment extends Fragment {
@@ -45,7 +47,7 @@ public class ExpenseInsertFragment extends Fragment {
         spinnerCategory = view.findViewById(R.id.spinnerExpenseCategory);
         Button btnAdd = view.findViewById(R.id.btnAddExpense);
 
-        // 🔁 Lier le spinner à expense_categories
+        // Lier le spinner aux catégories
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 requireContext(),
                 R.array.expense_categories,
@@ -54,7 +56,6 @@ public class ExpenseInsertFragment extends Fragment {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCategory.setAdapter(adapter);
 
-        // 📤 Bouton Ajouter
         btnAdd.setOnClickListener(v -> {
             String amountStr = editAmount.getText().toString().trim();
             String note = editNote.getText().toString().trim();
@@ -65,18 +66,33 @@ public class ExpenseInsertFragment extends Fragment {
                 return;
             }
 
-            double amount = Double.parseDouble(amountStr);
-            String id = UUID.randomUUID().toString();
-            long timestamp = System.currentTimeMillis();
-            String userId = "mock-user"; // à remplacer plus tard
+            // 🔐 Récupérer l'UID de l'utilisateur connecté
+            FirebaseAuth auth = FirebaseAuth.getInstance();
+            String userId = auth.getCurrentUser() != null ? auth.getCurrentUser().getUid() : null;
 
-            Expense expense = new Expense(id, amount, category, note, timestamp, userId);
-            viewModel.addExpense(expense);
-            Toast.makeText(getContext(), "Dépense ajoutée", Toast.LENGTH_SHORT).show();
+            if (userId == null) {
+                Toast.makeText(getContext(), "Utilisateur non connecté", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
-            editAmount.setText("");
-            editNote.setText("");
-            spinnerCategory.setSelection(0);
+            try {
+                double amount = Double.parseDouble(amountStr);
+                String id = UUID.randomUUID().toString();
+                long timestamp = System.currentTimeMillis();
+
+                Expense expense = new Expense(id, amount, category, note, timestamp, userId);
+                viewModel.addExpense(expense);
+
+                Toast.makeText(getContext(), "Dépense ajoutée", Toast.LENGTH_SHORT).show();
+
+                // Réinitialiser les champs
+                editAmount.setText("");
+                editNote.setText("");
+                spinnerCategory.setSelection(0);
+
+            } catch (NumberFormatException e) {
+                editAmount.setError("Montant invalide");
+            }
         });
     }
 }

@@ -81,4 +81,16 @@ public class ExpenseViewModel extends ViewModel {
         dbRef.removeValue();
         expenses.setValue(new ArrayList<>());
     }
+
+    public LiveData<Object> getTotalAmount() {
+        MutableLiveData<Object> totalAmount = new MutableLiveData<>();
+        expenses.observeForever(expensesList -> {
+            float total = 0;
+            for (Expense expense : expensesList) {
+                total += expense.amount;
+            }
+            totalAmount.setValue(total);
+        });
+        return totalAmount;
+    }
 }
