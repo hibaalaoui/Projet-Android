@@ -21,12 +21,12 @@ import com.example.projet.SavingsFragment;
 
 
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import com.google.android.material.navigation.NavigationView;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private BottomNavigationView bottomNavigationView;
+
     private FrameLayout frameLayout;
     private IncomeFragment incomeFragment;
     private ExpenseListFragment expenseFragment;
@@ -47,7 +47,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         toolbar.setTitle("Gestionnaire de finances personnelles");
         setSupportActionBar(toolbar);
 
-        bottomNavigationView = findViewById(R.id.bottomNavigationbar);
+
         frameLayout = findViewById(R.id.main_frame);
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
 
@@ -68,18 +68,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         // Default fragment
         setFragment(incomeFragment);
 
-        bottomNavigationView.setOnItemSelectedListener(item -> {
-            if (item.getItemId() == R.id.income) {
-                setFragment(incomeFragment);
-                bottomNavigationView.setItemBackgroundResource(R.color.income_color);
-                return true;
-            } else if (item.getItemId() == R.id.expenses) {
-                setFragment(expenseFragment);
-                bottomNavigationView.setItemBackgroundResource(R.color.expense_color);
-                return true;
-            }
-            return false;
-        });
+
     }
 
     private void setFragment(Fragment fragment) {
