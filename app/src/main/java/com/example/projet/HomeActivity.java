@@ -102,6 +102,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         } else if (itemId == R.id.nav_report) {
             fragment = new ReportFragment();
         }
+        else if (itemId == R.id.nav_budget_limits) {
+            fragment = new BudgetLimitFragment(); // ✅ Ouvre le fragment des plafonds
+        }
 
 
         if (fragment != null) {

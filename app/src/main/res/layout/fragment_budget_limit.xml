@@ -11,17 +11,17 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginBottom="16dp"
             android:text="Définir un plafond par catégorie"
-            android:textSize="20sp"
             android:textColor="@color/darkgreen"
-            android:textStyle="bold"
-            android:layout_marginBottom="16dp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <Spinner
             android:id="@+id/spinnerLimitCategory"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="52dp"
             android:layout_marginBottom="12dp"
             android:background="@drawable/spinner_background" />
 
@@ -41,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Enregistrer"
-            android:backgroundTint="@color/expense_color"
+            android:backgroundTint="@color/darkgreen"
             android:textColor="@android:color/white"
             android:elevation="4dp" />
     </LinearLayout>
