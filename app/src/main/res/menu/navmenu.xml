@@ -2,13 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/income"
         android:title="Revenus"
-        android:icon="@drawable/income" />
+        android:icon="@drawable/income_ic" />
     <item
         android:id="@+id/expenses"
-        android:title="Dépenses" />
+        android:title="Dépenses"
+        android:icon="@drawable/expense_ic"/>
     <item
         android:id="@+id/nav_savings"
-        android:icon="@drawable/income"
+        android:icon="@drawable/epargne_ic"
         android:title="Épargne"/>
 
 </menu>
