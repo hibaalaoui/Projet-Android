@@ -15,6 +15,9 @@
         android:id="@+id/nav_report"
         android:icon="@drawable/ic_report"
         android:title="Rapport Financier" />
+    <item
+        android:id="@+id/nav_budget_limits"
+        android:title="Plafond Budgetaire" />
 
 
 </menu>
