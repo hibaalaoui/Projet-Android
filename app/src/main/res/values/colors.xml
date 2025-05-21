@@ -10,4 +10,21 @@
     <color name="dashboard_color">#03A9F4</color>
     <color name="income_color">#009688</color>
     <color name="expense_color">#3F51B5</color>
+
+    <!-- Couleurs spécifiques aux cartes de dépenses -->
+    <color name="expense_background">#F4F6F8</color> <!-- Fond clair général -->
+    <color name="expense_card_bg">#FFFFFF</color>   <!-- Fond de chaque carte -->
+    <color name="expense_card_border">#E0E0E0</color>
+    <color name="expense_text_primary">#212121</color> <!-- Texte titre -->
+    <color name="expense_text_secondary">#757575</color> <!-- Texte notes/dates -->
+    <color name="expense_accent">#3F51B5</color> <!-- Bleu pour montants ou accent -->
+
+    <!-- Variante douce de bleu pour PieChart -->
+    <color name="expense_chart_blue">#5C6BC0</color>
+    <color name="expense_chart_green">#81C784</color>
+    <color name="expense_chart_red">#E57373</color>
+    <color name="expense_chart_yellow">#FFF176</color>
+    <color name="expense_chart_cyan">#4DD0E1</color>
+    <color name="expense_chart_magenta">#BA68C8</color>
+
 </resources>

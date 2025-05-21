@@ -1,33 +1,82 @@
-<?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/expense_background">
 
-    <!-- Liste des dépenses -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerExpenses"
+    <!-- Contenu principal -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:padding="12dp" />
+        android:orientation="vertical"
+        android:padding="12dp">
 
-    <!-- Bouton Ajouter -->
+        <!-- 💰 Carte Total des dépenses -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="4dp"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="12dp"
+            android:backgroundTint="@color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/textTotalLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total des dépenses"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/expense_text_primary" />
+
+                <TextView
+                    android:id="@+id/textTotalAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.00 DH"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/expense_accent" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- 🧾 Liste des dépenses -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerExpenses"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:paddingBottom="8dp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabAddExpense"
+            android:layout_width="80dp"
+            android:layout_height="66dp"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="16dp"
+            android:contentDescription="Ajouter une dépense"
+            android:src="@android:drawable/ic_input_add"
+            app:backgroundTint="@color/income_color"
+            app:tint="@android:color/white" />
+    </LinearLayout>
+
+    <!-- ✅ FAB Ajouter dépense -->
+
+    <!-- ✅ FAB Voir graphique -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabAddExpense"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
-        android:contentDescription="Ajouter une dépense"
-        android:src="@android:drawable/ic_input_add"
-        app:tint="@android:color/white" />
-    <Button
         android:id="@+id/btnShowChart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Voir le graphique"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="8dp" />
-
+        android:layout_width="68dp"
+        android:layout_height="71dp"
+        android:layout_gravity="bottom|left"
+        android:layout_margin="16dp"
+        android:contentDescription="Voir graphique"
+        app:backgroundTint="@color/income_color"
+        app:tint="@android:color/white" />
 </FrameLayout>
