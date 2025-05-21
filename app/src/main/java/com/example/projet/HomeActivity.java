@@ -16,6 +16,8 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import com.example.projet.BudgetLimitFragment;
+
 import com.example.projet.ExpenseListFragment;
 
 
@@ -109,9 +111,15 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             ft.replace(R.id.main_frame, fragment);
             ft.commit();
         }
+        else if (itemId == R.id.nav_budget_limits) {
+            fragment = new BudgetLimitFragment(); // ✅ Ouvre le fragment des plafonds
+        }
 
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         drawerLayout.closeDrawer(GravityCompat.START);
+
+
+
     }
 
     @Override

@@ -47,36 +47,41 @@
         </androidx.cardview.widget.CardView>
 
         <!-- 🧾 Liste des dépenses -->
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerExpenses"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="629dp"
             android:layout_weight="1"
             android:clipToPadding="false"
             android:paddingBottom="8dp" />
+    </LinearLayout>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabAddExpense"
-            android:layout_width="80dp"
-            android:layout_height="66dp"
+            android:layout_width="72dp"
+            android:layout_height="73dp"
             android:layout_gravity="bottom|right"
             android:layout_margin="16dp"
             android:contentDescription="Ajouter une dépense"
             android:src="@android:drawable/ic_input_add"
             app:backgroundTint="@color/income_color"
             app:tint="@android:color/white" />
-    </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnShowChart"
+            android:layout_width="72dp"
+            android:layout_height="73dp"
+            android:layout_gravity="bottom|left"
+            android:layout_margin="16dp"
+            android:contentDescription="Voir graphique"
+            android:src="@drawable/baseline_pie_chart_24"
+            app:backgroundTint="@color/income_color"
+            app:tint="@android:color/white"/>
+
 
     <!-- ✅ FAB Ajouter dépense -->
 
     <!-- ✅ FAB Voir graphique -->
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnShowChart"
-        android:layout_width="68dp"
-        android:layout_height="71dp"
-        android:layout_gravity="bottom|left"
-        android:layout_margin="16dp"
-        android:contentDescription="Voir graphique"
-        app:backgroundTint="@color/income_color"
-        app:tint="@android:color/white" />
+
 </FrameLayout>

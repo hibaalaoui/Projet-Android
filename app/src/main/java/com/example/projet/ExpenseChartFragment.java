@@ -5,11 +5,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projet.Model.Expense;
 import com.github.mikephil.charting.charts.PieChart;
@@ -20,6 +23,7 @@ import com.github.mikephil.charting.data.PieEntry;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class ExpenseChartFragment extends Fragment {
@@ -38,7 +42,24 @@ public class ExpenseChartFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view,
                               @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+
+            super.onViewCreated(view, savedInstanceState);
+
+            ExpenseViewModel viewModel = new ViewModelProvider(requireActivity()).get(ExpenseViewModel.class);
+
+            TextView textTotal = view.findViewById(R.id.textTotalChart);
+
+            // Adapter (existant)
+            ExpenseAdapter adapter = new ExpenseAdapter();
+
+            // 🔁 Observer les dépenses
+            viewModel.getExpenses().observe(getViewLifecycleOwner(), adapter::submitList);
+
+            // 💰 Observer le total
+            viewModel.getTotalAmount().observe(getViewLifecycleOwner(), total -> {
+                textTotal.setText(String.format(Locale.getDefault(), "Total : %.2f DH", total));
+
+            });
 
         pieChart = view.findViewById(R.id.pieChart);
         viewModel = new ViewModelProvider(requireActivity()).get(ExpenseViewModel.class);
