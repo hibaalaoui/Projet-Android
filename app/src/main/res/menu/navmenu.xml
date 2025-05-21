@@ -11,5 +11,10 @@
         android:id="@+id/nav_savings"
         android:icon="@drawable/epargne_ic"
         android:title="Épargne"/>
+    <item
+        android:id="@+id/nav_report"
+        android:icon="@drawable/ic_report"
+        android:title="Rapport Financier" />
+
 
 </menu>

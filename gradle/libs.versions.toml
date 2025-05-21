@@ -1,5 +1,5 @@
 [versions]
-agp = "8.9.1"
+agp = "8.10.0"
 constraintLayoutVersion = "2.0.4"
 design = "28.0.0"
 firebaseAuthVersion = "10.0.1"

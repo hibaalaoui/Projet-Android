@@ -18,6 +18,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import com.example.projet.ExpenseListFragment;
 import com.example.projet.SavingsFragment;
+import com.example.projet.ReportFragment;
+
 
 
 
@@ -95,7 +97,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             fragment = new ExpenseListFragment();
         } else if (itemId == R.id.nav_savings) {
             fragment = new SavingsFragment();
+        } else if (itemId == R.id.nav_report) {
+            fragment = new ReportFragment();
         }
+
 
         if (fragment != null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();

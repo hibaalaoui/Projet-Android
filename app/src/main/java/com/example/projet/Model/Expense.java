@@ -1,5 +1,8 @@
 package com.example.projet.Model;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class Expense {
     public String id;
@@ -23,11 +26,21 @@ public class Expense {
         this.userId = userId;
     }
 
-    // Tu peux ajouter getters/setters si tu utilises Room
+    // Getters (ajoutez-en d'autres si nécessaire)
     public double getAmount() {
         return amount;
     }
+
     public long getTimestamp() {
         return timestamp;
+    }
+
+    /**
+     * @return timestamp formatted as "dd/MM/yyyy"
+     */
+    public String getDate() {
+        Date date = new Date(this.timestamp);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        return sdf.format(date);
     }
 }
