@@ -26,5 +26,7 @@
     <color name="expense_chart_yellow">#FFF176</color>
     <color name="expense_chart_cyan">#4DD0E1</color>
     <color name="expense_chart_magenta">#BA68C8</color>
+    <color name="warning_red">#FFF3E0</color> <!-- rouge doux -->
+
 
 </resources>

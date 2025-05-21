@@ -105,15 +105,16 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         } else if (itemId == R.id.expenses) {
             fragment = new ExpenseListFragment();
         }
+        else if (itemId == R.id.nav_budget_limits) {
+            fragment = new BudgetLimitFragment(); // ✅ Ouvre le fragment des plafonds
+        }
 
         if (fragment != null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.main_frame, fragment);
             ft.commit();
         }
-        else if (itemId == R.id.nav_budget_limits) {
-            fragment = new BudgetLimitFragment(); // ✅ Ouvre le fragment des plafonds
-        }
+
 
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         drawerLayout.closeDrawer(GravityCompat.START);

@@ -50,7 +50,7 @@ public class ExpenseChartFragment extends Fragment {
             TextView textTotal = view.findViewById(R.id.textTotalChart);
 
             // Adapter (existant)
-            ExpenseAdapter adapter = new ExpenseAdapter();
+            ExpenseAdapter adapter = new ExpenseAdapter(requireContext());
 
             // 🔁 Observer les dépenses
             viewModel.getExpenses().observe(getViewLifecycleOwner(), adapter::submitList);
